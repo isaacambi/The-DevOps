@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xyz-app-deployment
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: xyz-app
+  template:
+    metadata:
+      labels:
+        app: xyz-app
+    spec:
+      containers:
+      - name: xyz-app-container
+        image: akurasy/endpoint  # Replace with your ECR repository URL and image tag
+        ports:
+        - containerPort: 8000  # Port on which your application inside the container listens
